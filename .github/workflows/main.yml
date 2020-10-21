@@ -20,6 +20,7 @@ jobs:
           cp external-config/.gitleaks.toml main/.gitleaks.toml
           cd main
           ls -al
+          echo "Workspace dir $GITHUB_WORKSPACE"
       - name: List files in current dir
         run: |
           ls -al
