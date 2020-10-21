@@ -4,19 +4,18 @@ jobs:
   gitleaks:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout current repo
-        uses: actions/checkout@v1
       - name: Checkout remote gitleaks config
         uses: actions/checkout@v2
         with:
             repository: vgaidarji/gitleaks-sample-config
             token: ${{ secrets.ACCESS_TOKEN }} 
+      - name: Checkout current repo
+        uses: actions/checkout@v1
       - name: List files in current dir
         run: |
           ls -al
           echo "Printing the gitleaks config to be used"
           echo "We want to make sure it's not matching the one predefined in gitleaks action https://github.com/zricethezav/gitleaks-action/blob/master/.gitleaks.toml"
           cat $GITHUB_WORKSPACE/.gitleaks.toml
-          echo "Printing same commits as gitleaks action will be using for leaks scan on PR"
       - name: gitleaks-action
         uses: zricethezav/gitleaks-action@master
