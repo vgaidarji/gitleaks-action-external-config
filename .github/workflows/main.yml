@@ -9,12 +9,16 @@ jobs:
         with:
             repository: vgaidarji/gitleaks-sample-config
             token: ${{ secrets.ACCESS_TOKEN }} 
-            path: .
+            path: external-config
       - name: Checkout current repo
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-          path: .
+          path: main
+      - name: Copy external config to main repo & cd to main
+        run: |
+          cp external-config/.gitleaks.toml main/.gitleaks.toml
+          cd main
       - name: List files in current dir
         run: |
           ls -al
