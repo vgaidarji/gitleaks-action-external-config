@@ -4,21 +4,14 @@ jobs:
   gitleaks:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout remote gitleaks config
-        uses: actions/checkout@v2
-        with:
-            repository: vgaidarji/gitleaks-sample-config
-            token: ${{ secrets.ACCESS_TOKEN }} 
-            path: external-config
       - name: Checkout current repo
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-          path: main
       - name: Copy external config to main repo & cd to main
         run: |
-          cp external-config/.gitleaks.toml main/.gitleaks.toml
-          cd main
+          git clone https://${secrets.ACCESS_TOKEN}:x-oauth-basic@github.com/vgaidarji/gitleaks-sample-config.git external-config
+          cp external-config/.gitleaks.toml .
           ls -al
           echo "Workspace dir $GITHUB_WORKSPACE"
       - name: List files in current dir
