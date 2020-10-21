@@ -19,6 +19,7 @@ jobs:
         run: |
           cp external-config/.gitleaks.toml main/.gitleaks.toml
           cd main
+          ls -al
       - name: List files in current dir
         run: |
           ls -al
