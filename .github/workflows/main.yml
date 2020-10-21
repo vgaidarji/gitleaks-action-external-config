@@ -6,6 +6,8 @@ jobs:
     steps:
       - name: Checkout current repo
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Checkout remote gitleaks config
         uses: actions/checkout@v2
         with:
