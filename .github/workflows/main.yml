@@ -9,12 +9,12 @@ jobs:
         with:
             repository: vgaidarji/gitleaks-sample-config
             token: ${{ secrets.ACCESS_TOKEN }} 
-            path: external-config
+            path: .
       - name: Checkout current repo
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-          path: main
+          path: .
       - name: List files in current dir
         run: |
           ls -al
