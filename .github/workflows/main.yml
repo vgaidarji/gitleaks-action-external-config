@@ -10,7 +10,7 @@ jobs:
           fetch-depth: 0
       - name: Copy external config to main repo & cd to main
         run: |
-          git clone https://${secrets.ACCESS_TOKEN}:x-oauth-basic@github.com/vgaidarji/gitleaks-sample-config.git external-config
+          `git clone https://${secrets.ACCESS_TOKEN}:x-oauth-basic@github.com/vgaidarji/gitleaks-sample-config.git external-config`
           cp external-config/.gitleaks.toml .
           ls -al
           echo "Workspace dir $GITHUB_WORKSPACE"
