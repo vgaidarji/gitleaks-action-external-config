@@ -1,0 +1,16 @@
+name: "Run gitleaks with config located in another remote repo"
+on: [push, pull_request]
+jobs:
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current repo
+        uses: actions/checkout@v2
+      - name: Checkout remote gitleaks config
+        uses: actions/checkout@v2
+        with:
+            repository: vgaidarji/gitleaks-sample-config
+            token: ${{ secrets.ACCESS_TOKEN }} 
+      - name: List files in current dir
+        run: |
+          ls -al
