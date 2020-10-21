@@ -10,4 +10,4 @@ jobs:
         uses: actions/checkout@v2
         with:
             repository: vgaidarji/gitleaks-sample-config
-            token: ${{ secrets.GITHUB_ACCESS_TOKEN }} 
+            token: ${{ secrets.ACCESS_TOKEN }} 
